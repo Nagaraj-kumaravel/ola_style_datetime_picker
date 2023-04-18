@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:ola_style_datetime_picker/ola_style_datetime_picker.dart';
 
 void main() {
@@ -33,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String selectedTime='';
+  DateTime? selectedTime;
 
 
   @override
@@ -51,13 +52,13 @@ class _MyHomePageState extends State<MyHomePage> {
           OlaStyleDateTimePicker(startDate: DateTime.now(), endDate: DateTime.now().add(Duration(days: 365*2)), selectedDate: DateTime.now(),
               onChanged:(dateTime){
                 setState(() {
-                  selectedTime = dateTime.toString();
+                  selectedTime = dateTime;
                 });
           }),
           SizedBox(height: 20,),
           Align(
             alignment: Alignment.center,
-              child: Text(selectedTime,
+              child: Text(selectedTime!=null?DateFormat('dd-MM-yyyy').format(selectedTime!):'Scroll to change',
               style: TextStyle(
                 fontSize: 18
               ),))
