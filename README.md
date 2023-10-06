@@ -27,7 +27,23 @@ A  Ola Style Datetime Picker is designed with a similar look and feel to the pop
      }),
 ```
 
+
 ## Screenshots
 
-![App Screenshot](https://raw.githubusercontent.com/Nagaraj-kumaravel/ola_style_datetime_picker/main/images/datetimepicker.jpg)
+![App Screenshot](http://139.59.43.169/travelApp/public/ezgif.com-video-to-gif.gif)
 
+
+## Usable Parms
+
+
+
+
+`startDate`
+
+`endDate`
+
+`selectedTextStyle`
+
+`dateFormat`
+
+`onChanged`

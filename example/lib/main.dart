@@ -34,36 +34,68 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  DateTime? selectedTime;
+  DateTime? selectedDateTime;
 
 
   @override
   Widget build(BuildContext context) {
   
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Align(
-            alignment: Alignment.center,
-              child: Text('A Ola Style Date Picker')),
-          SizedBox(height: 20,),
-          OlaStyleDateTimePicker(startDate: DateTime.now(), endDate: DateTime.now().add(Duration(days: 365*2)), selectedDate: DateTime.now(),
-              onChanged:(dateTime){
-                setState(() {
-                  selectedTime = dateTime;
-                });
-          }),
-          SizedBox(height: 20,),
-          Align(
-            alignment: Alignment.center,
-              child: Text(selectedTime!=null?DateFormat('dd-MM-yyyy').format(selectedTime!):'Scroll to change',
-              style: TextStyle(
-                fontSize: 18
-              ),))
-        ],
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.center,
+                child: Text('A Ola Style Date Picker')),
+            SizedBox(height: 40,),
+
+            Container(
+              padding: EdgeInsets.all(10),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: const [
+                  BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10,
+                      spreadRadius: 2)
+                ],
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Selected Date time:',
+                    style: TextStyle(
+                        fontSize: 14
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                  Text(selectedDateTime!=null?DateFormat('dd MMM, hh:mm a').format(selectedDateTime!):'Scroll to change',
+                    style: TextStyle(
+                        fontSize: 14,
+                      color: Colors.grey
+                    ),),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  OlaStyleDateTimePicker(startDate: DateTime.now(), endDate: DateTime.now().add(Duration(days: 365*2)), selectedDate: DateTime.now(),
+                      onChanged:(dateTime){
+                        setState(() {
+                          selectedDateTime = dateTime;
+                        });
+                  }),
+                ],
+              ),
+            ),
+            SizedBox(height: 20,),
+          ],
+        ),
       ),
     );
   }
+
 }
